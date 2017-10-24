@@ -6,6 +6,10 @@ module.exports = {
   target: "web",
   context: srcPath,
   entry: "./index.js",
+  devServer: {
+    contentBase: path.join(__dirname, "build"),
+    historyApiFallback: true
+  },
   output: {
     path: distPath,
     filename: "graphiql.js",
