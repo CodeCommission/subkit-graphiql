@@ -1,8 +1,9 @@
 {
   "name": "subkit-graphiql",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "Mike Bild <mike.bild@googlemail.com>",
   "license": "MIT",
+  "description": "GraphiQL for SubKit",
   "homepage": "https://github.com/codecommission/subkit-graphiql#readme",
   "repository": {
     "type": "git",
