@@ -1,13 +1,27 @@
 {
   "name": "subkit-graphiql",
   "version": "0.1.0",
-  "description": "",
+  "author": "Mike Bild <mike.bild@googlemail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/codecommission/subkit-graphiql#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codecommission/subkit-graphiql.git"
+  },
+  "bugs": {
+    "url": "https://github.com/codecommission/subkit-graphiql/issues"
+  },
+  "keywords": [
+    "graphql",
+    "subscriptions",
+    "sse",
+    "expressjs",
+    "transport",
+    "connection"
+  ],
   "main": "dist/express.js",
   "browser": "dist/client.js",
-  "files": [
-    "dist",
-    "browser"
-  ],
+  "files": ["dist", "browser"],
   "scripts": {
     "build": "webpack -p --progress",
     "prepublish": "npm run build",
@@ -25,9 +39,6 @@
       "react"
     ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "MIT",
   "dependencies": {
     "graphiql": "^0.11.5",
     "graphql": "^0.10.5",
