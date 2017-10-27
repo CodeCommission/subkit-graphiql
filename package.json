@@ -1,6 +1,6 @@
 {
   "name": "subkit-graphiql",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Mike Bild <mike.bild@googlemail.com>",
   "license": "MIT",
   "description": "GraphiQL for SubKit",
@@ -12,14 +12,14 @@
   "bugs": {
     "url": "https://github.com/codecommission/subkit-graphiql/issues"
   },
-  "keywords": ["graphql", "subscriptions", "sse", "graphiql"],
+  "keywords": ["graphql", "subscriptions", "server-side-events", "graphiql"],
   "main": "dist/graphiql.js",
   "browser": "dist/graphiql.js",
   "files": ["dist", "browser"],
   "scripts": {
     "build": "webpack -p --progress",
     "prepublish": "npm run build",
-    "dev": "webpack-dev-server",
+    "dev": "API_HOST=http://localhost:8080 webpack-dev-server",
     "commit": "git-cz"
   },
   "babel": {
@@ -34,12 +34,12 @@
     ]
   },
   "dependencies": {
-    "graphiql": "^0.11.6",
+    "graphiql": "^0.11.9",
     "graphql": "^0.10.5",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.0",
-    "react": "^15.6.2",
-    "react-dom": "^15.6.2",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "styled-components": "^2.2.2",
     "subscriptions-transport-sse": "^0.6.4"
   },

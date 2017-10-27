@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const srcPath = path.resolve(__dirname, "src");
 const distPath = path.resolve(__dirname, "dist");
@@ -35,6 +36,13 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: "GraphiQL",
       template: "index.html"
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        API_HOST: JSON.stringify(
+          process.env.API_HOST ? process.env.API_HOST : ""
+        )
+      }
     })
   ]
 };

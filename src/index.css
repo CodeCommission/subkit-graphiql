@@ -1,8 +1,8 @@
 body {
-  height: 100%;
   margin: 0;
-  width: 100%;
+  padding: 0;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 #graphiql {
@@ -13,9 +13,7 @@ body {
 .graphiql-container button,
 .graphiql-container input {
   color: #141823;
-  font-family: system, -apple-system, "San Francisco", ".SFNSDisplay-Regular",
-    "Segoe UI", Segoe, "Segoe WP", "Helvetica Neue", helvetica, "Lucida Grande",
-    arial, sans-serif;
+  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   font-size: 14px;
 }
 
@@ -70,13 +68,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#f7f7f7),
-    to(#e2e2e2)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e2e2e2));
   background: linear-gradient(#f7f7f7, #e2e2e2);
   border-bottom: 1px solid #d0d0d0;
   cursor: default;
@@ -107,13 +99,7 @@ body {
 
 .graphiql-container .docExplorerShow,
 .graphiql-container .historyShow {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#f7f7f7),
-    to(#e2e2e2)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#f7f7f7), to(#e2e2e2));
   background: linear-gradient(#f7f7f7, #e2e2e2);
   border-bottom: 1px solid #d0d0d0;
   border-right: none;
@@ -138,7 +124,7 @@ body {
 .graphiql-container .docExplorerShow:before {
   border-left: 2px solid #3b5998;
   border-top: 2px solid #3b5998;
-  content: "";
+  content: '';
   display: inline-block;
   height: 9px;
   margin: 0 3px -1px 0;
@@ -283,7 +269,7 @@ body {
 .graphiql-container .footer:before {
   background: #eeeeee;
   bottom: 0;
-  content: " ";
+  content: ' ';
   left: -13px;
   position: absolute;
   top: -1px;
@@ -308,20 +294,13 @@ body {
 }
 
 .graphiql-container .toolbar-button {
+  font-size: small;
   background: #fdfdfd;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#f9f9f9),
-    to(#ececec)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#f9f9f9), to(#ececec));
   background: linear-gradient(#f9f9f9, #ececec);
   border-radius: 3px;
-  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.7), inset 0 1px #fff;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2),
-    0 1px 0 rgba(255, 255, 255, 0.7), inset 0 1px #fff;
+  -webkit-box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 1px #fff;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 1px #fff;
   color: #555;
   cursor: pointer;
   display: inline-block;
@@ -334,30 +313,14 @@ body {
 }
 
 .graphiql-container .toolbar-button:active {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#ececec),
-    to(#d5d5d5)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#ececec), to(#d5d5d5));
   background: linear-gradient(#ececec, #d5d5d5);
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 1px 1px rgba(0, 0, 0, 0.12),
-    inset 0 0 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 1px 1px rgba(0, 0, 0, 0.12),
-    inset 0 0 5px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 1px 1px rgba(0, 0, 0, 0.12), inset 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 1px 1px 1px rgba(0, 0, 0, 0.12), inset 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .graphiql-container .toolbar-button.error {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#fdf3f3),
-    to(#e6d6d7)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdf3f3), to(#e6d6d7));
   background: linear-gradient(#fdf3f3, #e6d6d7);
   color: #b00;
 }
@@ -389,13 +352,7 @@ body {
 }
 
 .graphiql-container .execute-button {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#fdfdfd),
-    to(#d2d3d6)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#fdfdfd), to(#d2d3d6));
   background: linear-gradient(#fdfdfd, #d2d3d6);
   border-radius: 17px;
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -414,18 +371,10 @@ body {
 }
 
 .graphiql-container .execute-button:active {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#e6e6e6),
-    to(#c3c3c3)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#c3c3c3));
   background: linear-gradient(#e6e6e6, #c3c3c3);
-  -webkit-box-shadow: 0 1px 0 #fff, inset 0 0 2px rgba(0, 0, 0, 0.2),
-    inset 0 0 6px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 0 #fff, inset 0 0 2px rgba(0, 0, 0, 0.2),
-    inset 0 0 6px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 0 #fff, inset 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 0 #fff, inset 0 0 2px rgba(0, 0, 0, 0.2), inset 0 0 6px rgba(0, 0, 0, 0.1);
 }
 
 .graphiql-container .execute-button:focus {
@@ -441,8 +390,7 @@ body {
 .graphiql-container .toolbar-menu-items,
 .graphiql-container .toolbar-select-options {
   background: #fff;
-  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
-    0 2px 4px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.25);
   margin: 0;
   padding: 6px 0;
@@ -525,7 +473,7 @@ body {
 
 .graphiql-container .CodeMirror {
   color: #141823;
-  font-family: "Consolas", "Inconsolata", "Droid Sans Mono", "Monaco", monospace;
+  font-family: 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace;
   font-size: 13px;
   height: 100%;
   left: 0;
@@ -544,9 +492,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  font-family: system, -apple-system, "San Francisco", ".SFNSDisplay-Regular",
-    "Segoe UI", Segoe, "Segoe WP", "Helvetica Neue", helvetica, "Lucida Grande",
-    arial, sans-serif;
+  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   font-size: 13px;
   line-clamp: 3;
   line-height: 16px;
@@ -616,9 +562,7 @@ div.CodeMirror-lint-tooltip {
   color: #141823;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-  font-family: system, -apple-system, "San Francisco", ".SFNSDisplay-Regular",
-    "Segoe UI", Segoe, "Segoe WP", "Helvetica Neue", helvetica, "Lucida Grande",
-    arial, sans-serif;
+  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   font-size: 13px;
   line-height: 16px;
   max-width: 430px;
@@ -642,16 +586,9 @@ div.CodeMirror-lint-tooltip > * + * {
 .graphiql-container .CodeMirror-foldmarker {
   border-radius: 4px;
   background: #08f;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(#43a8ff),
-    to(#0f83e8)
-  );
+  background: -webkit-gradient(linear, left top, left bottom, from(#43a8ff), to(#0f83e8));
   background: linear-gradient(#43a8ff, #0f83e8);
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
-    inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(0, 0, 0, 0.1);
   color: white;
   font-family: arial;
@@ -1197,7 +1134,7 @@ div.CodeMirror-dragcursors {
 
 /* See issue #2901 */
 .cm-tab-wrap-hack:after {
-  content: "";
+  content: '';
 }
 
 /* Help users use markselection to safely style text background */
@@ -1292,7 +1229,7 @@ span.CodeMirror-selectedtext {
 .graphiql-container .doc-explorer-back:before {
   border-left: 2px solid #3b5998;
   border-top: 2px solid #3b5998;
-  content: "";
+  content: '';
   display: inline-block;
   height: 9px;
   margin: 0 3px -1px 0;
@@ -1410,7 +1347,7 @@ span.CodeMirror-selectedtext {
 }
 
 .graphiql-container .arg:first-child:nth-last-child(2):after {
-  content: ", ";
+  content: ', ';
 }
 
 .graphiql-container .arg-default-value {
@@ -1431,7 +1368,7 @@ span.CodeMirror-selectedtext {
 }
 
 .graphiql-container .doc-deprecation:before {
-  content: "Deprecated:";
+  content: 'Deprecated:';
   color: #c79b2e;
   cursor: default;
   display: block;
@@ -1479,7 +1416,7 @@ span.CodeMirror-selectedtext {
 }
 
 .graphiql-container .search-box:before {
-  content: "\26b2";
+  content: '\26b2';
   cursor: pointer;
   display: block;
   font-size: 24px;
@@ -1541,8 +1478,7 @@ span.CodeMirror-selectedtext {
   cursor: pointer;
   font-family: arial;
   line-height: 0.3;
-  text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px,
-    #b9f -1px 1px 2px;
+  text-shadow: #b9f 1px 1px 2px, #b9f -1px -1px 2px, #b9f 1px -1px 2px, #b9f -1px 1px 2px;
 }
 .CodeMirror-foldgutter {
   width: 0.7em;
@@ -1552,13 +1488,13 @@ span.CodeMirror-selectedtext {
   cursor: pointer;
 }
 .CodeMirror-foldgutter-open:after {
-  content: "\25BE";
+  content: '\25BE';
 }
 .CodeMirror-foldgutter-folded:after {
-  content: "\25B8";
+  content: '\25B8';
 }
 .graphiql-container .history-contents {
-  font-family: "Consolas", "Inconsolata", "Droid Sans Mono", "Monaco", monospace;
+  font-family: 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace;
   padding: 0;
 }
 
@@ -1583,9 +1519,7 @@ span.CodeMirror-selectedtext {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   color: #555;
-  font-family: system, -apple-system, "San Francisco", ".SFNSDisplay-Regular",
-    "Segoe UI", Segoe, "Segoe WP", "Helvetica Neue", helvetica, "Lucida Grande",
-    arial, sans-serif;
+  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   font-size: 13px;
   line-height: 16px;
   margin: 8px -8px;
@@ -1713,11 +1647,11 @@ span.CodeMirror-selectedtext {
 }
 
 .CodeMirror-lint-mark-error {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJDw4cOCW1/KIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAHElEQVQI12NggIL/DAz/GdA5/xkY/qPKMDAwAADLZwf5rvm+LQAAAABJRU5ErkJggg==");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJDw4cOCW1/KIAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAHElEQVQI12NggIL/DAz/GdA5/xkY/qPKMDAwAADLZwf5rvm+LQAAAABJRU5ErkJggg==');
 }
 
 .CodeMirror-lint-mark-warning {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJFhQXEbhTg7YAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAMklEQVQI12NkgIIvJ3QXMjAwdDN+OaEbysDA4MPAwNDNwMCwiOHLCd1zX07o6kBVGQEAKBANtobskNMAAAAASUVORK5CYII=");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAADCAYAAAC09K7GAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9sJFhQXEbhTg7YAAAAZdEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIEdJTVBXgQ4XAAAAMklEQVQI12NkgIIvJ3QXMjAwdDN+OaEbysDA4MPAwNDNwMCwiOHLCd1zX07o6kBVGQEAKBANtobskNMAAAAASUVORK5CYII=');
 }
 
 .CodeMirror-lint-marker-error,
@@ -1741,16 +1675,16 @@ span.CodeMirror-selectedtext {
 
 .CodeMirror-lint-marker-error,
 .CodeMirror-lint-message-error {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAHlBMVEW7AAC7AACxAAC7AAC7AAAAAAC4AAC5AAD///+7AAAUdclpAAAABnRSTlMXnORSiwCK0ZKSAAAATUlEQVR42mWPOQ7AQAgDuQLx/z8csYRmPRIFIwRGnosRrpamvkKi0FTIiMASR3hhKW+hAN6/tIWhu9PDWiTGNEkTtIOucA5Oyr9ckPgAWm0GPBog6v4AAAAASUVORK5CYII=");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAHlBMVEW7AAC7AACxAAC7AAC7AAAAAAC4AAC5AAD///+7AAAUdclpAAAABnRSTlMXnORSiwCK0ZKSAAAATUlEQVR42mWPOQ7AQAgDuQLx/z8csYRmPRIFIwRGnosRrpamvkKi0FTIiMASR3hhKW+hAN6/tIWhu9PDWiTGNEkTtIOucA5Oyr9ckPgAWm0GPBog6v4AAAAASUVORK5CYII=');
 }
 
 .CodeMirror-lint-marker-warning,
 .CodeMirror-lint-message-warning {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAANlBMVEX/uwDvrwD/uwD/uwD/uwD/uwD/uwD/uwD/uwD6twD/uwAAAADurwD2tQD7uAD+ugAAAAD/uwDhmeTRAAAADHRSTlMJ8mN1EYcbmiixgACm7WbuAAAAVklEQVR42n3PUQqAIBBFUU1LLc3u/jdbOJoW1P08DA9Gba8+YWJ6gNJoNYIBzAA2chBth5kLmG9YUoG0NHAUwFXwO9LuBQL1giCQb8gC9Oro2vp5rncCIY8L8uEx5ZkAAAAASUVORK5CYII=");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAANlBMVEX/uwDvrwD/uwD/uwD/uwD/uwD/uwD/uwD/uwD6twD/uwAAAADurwD2tQD7uAD+ugAAAAD/uwDhmeTRAAAADHRSTlMJ8mN1EYcbmiixgACm7WbuAAAAVklEQVR42n3PUQqAIBBFUU1LLc3u/jdbOJoW1P08DA9Gba8+YWJ6gNJoNYIBzAA2chBth5kLmG9YUoG0NHAUwFXwO9LuBQL1giCQb8gC9Oro2vp5rncCIY8L8uEx5ZkAAAAASUVORK5CYII=');
 }
 
 .CodeMirror-lint-marker-multiple {
-  background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAMAAADzjKfhAAAACVBMVEUAAAAAAAC/v7914kyHAAAAAXRSTlMAQObYZgAAACNJREFUeNo1ioEJAAAIwmz/H90iFFSGJgFMe3gaLZ0od+9/AQZ0ADosbYraAAAAAElFTkSuQmCC");
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAMAAADzjKfhAAAACVBMVEUAAAAAAAC/v7914kyHAAAAAXRSTlMAQObYZgAAACNJREFUeNo1ioEJAAAIwmz/H90iFFSGJgFMe3gaLZ0od+9/AQZ0ADosbYraAAAAAElFTkSuQmCC');
   background-position: right bottom;
   background-repeat: no-repeat;
   width: 100%;
@@ -1807,7 +1741,7 @@ span.CodeMirror-selectedtext {
   background: white;
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
-  font-family: "Consolas", "Inconsolata", "Droid Sans Mono", "Monaco", monospace;
+  font-family: 'Consolas', 'Inconsolata', 'Droid Sans Mono', 'Monaco', monospace;
   font-size: 13px;
   list-style: none;
   margin-left: -6px;
@@ -1856,9 +1790,7 @@ li.CodeMirror-hint-active {
   -webkit-box-shadow: inset 0 1px 1px -1px #bfb063;
   box-shadow: inset 0 1px 1px -1px #bfb063;
   color: #867f70;
-  font-family: system, -apple-system, "San Francisco", ".SFNSDisplay-Regular",
-    "Segoe UI", Segoe, "Segoe WP", "Helvetica Neue", helvetica, "Lucida Grande",
-    arial, sans-serif;
+  font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   font-size: 13px;
   line-height: 16px;
   margin-top: 4px;
