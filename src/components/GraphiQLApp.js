@@ -48,7 +48,7 @@ const hasSubscriptionOperation = graphQlParams => {
   for (let definition of queryDoc.definitions) {
     if (definition.kind === 'OperationDefinition') {
       const operation = definition.operation;
-      if (operation === 'subscription' && definition.name.value === graphQlParams.operationName) {
+      if (operation === 'subscription' && definition && definition.name && definition.name.value === graphQlParams.operationName) {
         return true;
       }
     }
@@ -129,6 +129,8 @@ export default class GraphiQLApp extends React.PureComponent {
             if (hasSubscriptionOperation(params)) return fetcher(params);
 
             return fetcher(params).then(data => {
+              if (!data) return data;
+              if (!data.data) return data;
               if (!data.data.__schema) this.setState({ data });
               return data;
             });
@@ -151,27 +153,34 @@ export default class GraphiQLApp extends React.PureComponent {
                 <ExtentionsTraceStyled>
                   <CloseButton onClick={() => this.setState({ extentionTraceVisible: !this.state.extentionTraceVisible })}>Close</CloseButton>
                   <ul>
-                    <li>Query run time: {`${this.state.data.extensions.runTime}ns`}</li>
-                    <li>Query complexity score: {this.state.data.extensions.complexityScore}</li>
+                    <li>Duration: {`${this.state.data.extensions.duration || '-'}`}</li>
+                    <li>Persistent: {`${this.state.data.extensions.isPersistent || false}`}</li>
+                    <li>
+                      {this.state.data.extensions.score && (
+                        <span>
+                          Score/max: {this.state.data.extensions.score || '-'} / {this.state.data.extensions.scoreMax || '-'}
+                        </span>
+                      )}
+                    </li>
                     <li>
                       Query tracing:
-                      {this.state.data.extensions.queryTracing &&
-                        this.state.data.extensions.queryTracing.execution &&
-                        this.state.data.extensions.queryTracing.execution.resolvers && (
+                      {this.state.data.extensions.trace &&
+                        this.state.data.extensions.trace.execution &&
+                        this.state.data.extensions.trace.execution.resolvers && (
                           <ul>
-                            {this.state.data.extensions.queryTracing.execution.resolvers.map((x, a) => {
+                            {this.state.data.extensions.trace.execution.resolvers.map((x, a) => {
                               if (x.path.length > 1)
                                 return (
                                   <ul key={a}>
                                     <li>
-                                      <div>{`${x.path.slice(1, x.path.length).join(' > ')} ${x.duration}ns`}</div>
+                                      <div>{`${x.path.slice(1, x.path.length).join(' > ')} Duration: ${x.duration} | Score: ${x.score}`}</div>
                                     </li>
                                   </ul>
                                 );
 
                               return (
                                 <li key={a}>
-                                  <div>{`${x.parentType} > ${x.path.join(' > ')} ${x.duration}ns`}</div>
+                                  <div>{`${x.parentType} > ${x.path.join(' > ')} Duration: ${x.duration} | Score: ${x.score}`}</div>
                                 </li>
                               );
                             })}

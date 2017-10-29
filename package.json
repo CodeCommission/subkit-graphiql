@@ -1,6 +1,6 @@
 {
   "name": "subkit-graphiql",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": "Mike Bild <mike.bild@googlemail.com>",
   "license": "MIT",
   "description": "GraphiQL for SubKit",
@@ -34,7 +34,7 @@
     ]
   },
   "dependencies": {
-    "graphiql": "^0.11.9",
+    "graphiql": "^0.11.10",
     "graphql": "^0.10.5",
     "isomorphic-fetch": "^2.2.1",
     "prop-types": "^15.6.0",
