@@ -57,11 +57,25 @@ const hasSubscriptionOperation = graphQlParams => {
   return false;
 };
 function graphQLFetcher(graphQLParams) {
+  const headers = {
+    'Content-Type': 'application/json',
+  };
+
+  if (localStorage && localStorage['subkit-graphiql-token']) {
+    try {
+      headers['Authorization'] = `Bearer ${JSON.parse(localStorage['subkit-graphiql-token'])}`;
+    } catch (error) {}
+  }
+
   return fetch(`${process.env.API_HOST}/graphql`, {
     method: 'post',
-    headers: { 'Content-Type': 'application/json' },
+    headers,
     body: JSON.stringify(graphQLParams),
-  }).then(response => response.json());
+  }).then(response => {
+    if (response.status === 401) throw new Error(response.statusText);
+
+    return response.json();
+  });
 }
 const fetcher = graphQLSubscriptionFetcher(sseClient, graphQLFetcher);
 
@@ -113,7 +127,7 @@ export default class GraphiQLApp extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      settingsButtonVisible: false,
+      settingsButtonVisible: true,
       toolsVisible: false,
       data: {},
       extentionTraceVisible: false,
@@ -126,14 +140,29 @@ export default class GraphiQLApp extends React.PureComponent {
         <Tools visible={this.state.toolsVisible} onToolsClose={() => this.setState({ toolsVisible: !this.state.toolsVisible })} data={this.state.data.extensions} />
         <GraphiQL
           fetcher={params => {
-            if (hasSubscriptionOperation(params)) return fetcher(params);
+            if (hasSubscriptionOperation(params))
+              return fetcher(params).catch(error => {
+                if (error.message === 'Unauthorized') {
+                  this.setState({ settingsButtonVisible: true });
+                  return { errors: [{ message: error.message }] };
+                }
+                throw error;
+              });
 
-            return fetcher(params).then(data => {
-              if (!data) return data;
-              if (!data.data) return data;
-              if (!data.data.__schema) this.setState({ data });
-              return data;
-            });
+            return fetcher(params)
+              .then(data => {
+                if (!data) return data;
+                if (!data.data) return data;
+                if (!data.data.__schema) this.setState({ data });
+                return data;
+              })
+              .catch(error => {
+                if (error.message === 'Unauthorized') {
+                  this.setState({ settingsButtonVisible: true });
+                  return { errors: [{ message: error.message }] };
+                }
+                throw error;
+              });
           }}
           query={parameters.query}
           variables={parameters.variables}
