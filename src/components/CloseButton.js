@@ -17,7 +17,7 @@ export const CloseButtonStyled = styled.button`
   text-decoration: none;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 150px;
+  max-width: 200px;
   border: 1px;
 `;
 

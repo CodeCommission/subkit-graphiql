@@ -43,19 +43,20 @@ const InputFieldLabel = styled.label`
 const FullSizeInputField = styled.input`
   font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   padding: 5px;
-  width: 98%;
+  width: 95%;
 `;
 
 const HalfSizeInputField = styled.input`
   font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
   padding: 5px;
-  width: 80%;
+  width: 46%;
 `;
 
-const InputField = styled.input`
+const ErrorMessage = styled.div`
+  padding: 15px 0 0 0;
+  height: 20px;
   font-family: system, -apple-system, 'San Francisco', '.SFNSDisplay-Regular', 'Segoe UI', Segoe, 'Segoe WP', 'Helvetica Neue', helvetica, 'Lucida Grande', arial, sans-serif;
-  padding: 5px;
-  width: 98%;
+  color: red;
 `;
 
 export default class Tools extends React.Component {
@@ -63,7 +64,9 @@ export default class Tools extends React.Component {
     super(props);
     this.state = {
       jwt: this.getJWT(),
-      secret: '',
+      payloadJWT: {},
+      secret: 'SuperSecret',
+      error: '',
     };
   }
 
@@ -79,12 +82,17 @@ export default class Tools extends React.Component {
     }
   }
 
-  generateJWT(secret) {
-    const jwt = sign({}, secret);
-    this.setState({ jwt }, () => this.setJWT(jwt));
+  generateJWT() {
+    try {
+      const jwt = sign(this.state.payloadJWT, this.state.secret);
+      this.setState({ jwt, error: '' });
+    } catch (error) {
+      this.setState({ error: error.message });
+    }
   }
 
   saveJWT() {
+    this.setJWT(this.state.jwt);
     this.props.onToolsClose && this.props.onToolsClose();
   }
 
@@ -92,23 +100,77 @@ export default class Tools extends React.Component {
     return (
       <Overlay visible={this.props.visible}>
         <CloseButton onClick={() => this.props.onToolsClose && this.props.onToolsClose()}>Close</CloseButton>
-        <Title>Settings</Title>
+        <Title>Authentication & Authorization Settings</Title>
         <InputFieldSet>
-          <InputFieldSetLegend>JWT</InputFieldSetLegend>
-          <InputFieldLabel>Generate</InputFieldLabel>
-          <HalfSizeInputField type="text" placeholder="Enter your secret here" onBlur={e => this.setState({ secret: e.target.value })} />
-          <ActionButton onClick={() => this.generateJWT(this.state.secret)}>Generate</ActionButton>
-          <InputFieldLabel>Token</InputFieldLabel>
-          <FullSizeInputField
-            type="text"
-            placeholder="Enter your JWT here"
-            onChange={e => {
-              e.persist();
-              this.setState({ jwt: e.target.value }, () => this.setJWT(e.target.value));
-            }}
-            value={this.state.jwt}
-          />
-          <SaveButton onClick={() => this.saveJWT()}>Save</SaveButton>
+          <InputFieldSetLegend>JSON Web Token</InputFieldSetLegend>
+          <div>
+            <InputFieldLabel>Secret</InputFieldLabel>
+            <FullSizeInputField type="text" placeholder="Enter your JWT-Secret" onBlur={e => this.setState({ secret: e.target.value })} defaultValue={this.state.secret} />
+            <br />
+            <br />
+            <InputFieldLabel>Fields</InputFieldLabel>
+            <HalfSizeInputField
+              type="text"
+              placeholder="Key"
+              innerRef={input => (this.key1 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key1.value]: this.value1.value }) })}
+            />&nbsp;=&nbsp;<HalfSizeInputField
+              type="text"
+              placeholder="Value"
+              innerRef={input => (this.value1 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key1.value]: this.value1.value }) })}
+            />
+            <HalfSizeInputField
+              type="text"
+              placeholder="Key"
+              innerRef={input => (this.key2 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key2.value]: this.value2.value }) })}
+            />&nbsp;=&nbsp;<HalfSizeInputField
+              type="text"
+              placeholder="Value"
+              innerRef={input => (this.value2 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key2.value]: this.value2.value }) })}
+            />
+            <HalfSizeInputField
+              type="text"
+              placeholder="Key"
+              innerRef={input => (this.key3 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key3.value]: this.value3.value }) })}
+            />&nbsp;=&nbsp;<HalfSizeInputField
+              type="text"
+              placeholder="Value"
+              innerRef={input => (this.value3 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key3.value]: this.value3.value }) })}
+            />
+            <HalfSizeInputField
+              type="text"
+              placeholder="Key"
+              innerRef={input => (this.key4 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key4.value]: this.value4.value }) })}
+            />&nbsp;=&nbsp;<HalfSizeInputField
+              type="text"
+              placeholder="Value"
+              innerRef={input => (this.value4 = input)}
+              onBlur={() => this.setState({ payloadJWT: Object.assign({}, this.state.payloadJWT, { [this.key4.value]: this.value4.value }) })}
+            />
+            <ErrorMessage>{this.state.error}</ErrorMessage>
+            <ActionButton onClick={() => this.generateJWT()}>Generate a API-Token</ActionButton>
+          </div>
+          <br />
+          <br />
+          <div>
+            <InputFieldLabel>Your API-Token</InputFieldLabel>
+            <FullSizeInputField
+              type="text"
+              placeholder="Enter your existing JWT"
+              onChange={e => {
+                e.persist();
+                this.setState({ jwt: e.target.value }, () => this.setJWT(e.target.value));
+              }}
+              value={this.state.jwt}
+            />
+          </div>
+          <SaveButton onClick={() => this.saveJWT()}>Apply & Save</SaveButton>
         </InputFieldSet>
       </Overlay>
     );

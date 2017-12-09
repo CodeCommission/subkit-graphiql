@@ -6,7 +6,15 @@ import { SubscriptionClient } from 'subscriptions-transport-sse';
 import ExtentionsTraceStyled from './ExtentionsTraceStyled';
 import CloseButton from './CloseButton';
 
-const sseClient = new SubscriptionClient(`${process.env.API_HOST}/subscriptions`, {});
+const sseClient = new SubscriptionClient(`${process.env.API_HOST}/subscriptions`, () => {
+  const headers = {};
+  if (localStorage && localStorage['subkit-graphiql-token']) {
+    try {
+      headers['Authorization'] = `Bearer ${JSON.parse(localStorage['subkit-graphiql-token'])}`;
+    } catch (error) {}
+  }
+  return { headers };
+});
 
 const graphQLSubscriptionFetcher = (subscriptionsClient, fallbackFetcher) => {
   let activeSubscriptionId = null;
@@ -140,15 +148,7 @@ export default class GraphiQLApp extends React.PureComponent {
         <Tools visible={this.state.toolsVisible} onToolsClose={() => this.setState({ toolsVisible: !this.state.toolsVisible })} data={this.state.data.extensions} />
         <GraphiQL
           fetcher={params => {
-            if (hasSubscriptionOperation(params))
-              return fetcher(params).catch(error => {
-                if (error.message === 'Unauthorized') {
-                  this.setState({ settingsButtonVisible: true });
-                  return { errors: [{ message: error.message }] };
-                }
-                throw error;
-              });
-
+            if (hasSubscriptionOperation(params)) return fetcher(params);
             return fetcher(params)
               .then(data => {
                 if (!data) return data;
@@ -172,7 +172,7 @@ export default class GraphiQLApp extends React.PureComponent {
           onEditOperationName={onEditOperationName}>
           <GraphiQL.Logo>
             GraphiQL&nbsp;&nbsp;&nbsp;&nbsp;
-            {this.state.settingsButtonVisible && <GraphiQL.Button label="Settings" title="Settings" onClick={() => this.setState({ toolsVisible: !this.state.toolsVisible })} />}
+            {this.state.settingsButtonVisible && <GraphiQL.Button label="JWT-Auth" title="JWT-Auth" onClick={() => this.setState({ toolsVisible: !this.state.toolsVisible })} />}
             {<GraphiQL.Button label="Trace" title="Trace" onClick={() => this.setState({ extentionTraceVisible: !this.state.extentionTraceVisible })} />}
           </GraphiQL.Logo>
           <GraphiQL.Footer>
