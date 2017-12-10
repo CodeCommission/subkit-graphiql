@@ -12,10 +12,18 @@
   "bugs": {
     "url": "https://github.com/codecommission/subkit-graphiql/issues"
   },
-  "keywords": ["graphql", "subscriptions", "server-side-events", "graphiql"],
+  "keywords": [
+    "graphql",
+    "subscriptions",
+    "server-side-events",
+    "graphiql"
+  ],
   "main": "dist/graphiql.js",
   "browser": "dist/graphiql.js",
-  "files": ["dist", "browser"],
+  "files": [
+    "dist",
+    "browser"
+  ],
   "scripts": {
     "build": "webpack -p --progress",
     "prepublish": "npm run build",
