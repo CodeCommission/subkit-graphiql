@@ -1,6 +1,6 @@
 {
   "name": "subkit-graphiql",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "Mike Bild <mike.bild@googlemail.com>",
   "license": "MIT",
   "description": "GraphiQL for SubKit",
@@ -59,7 +59,7 @@
     "static-server": "^3.0.0",
     "style-loader": "^0.19.0",
     "styled-components": "^2.2.2",
-    "subscriptions-transport-sse": "^0.7.7",
+    "subscriptions-transport-sse": "^0.7.8",
     "webpack": "^2.7.0",
     "webpack-dev-server": "^2.9.3"
   },
