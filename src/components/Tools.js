@@ -105,7 +105,7 @@ export default class Tools extends React.Component {
           <InputFieldSetLegend>JSON Web Token</InputFieldSetLegend>
           <div>
             <InputFieldLabel>Secret</InputFieldLabel>
-            <FullSizeInputField type="text" placeholder="Enter your JWT-Secret" onBlur={e => this.setState({ secret: e.target.value })} defaultValue={this.state.secret} />
+            <FullSizeInputField type="password" placeholder="Enter your JWT-Secret" onBlur={e => this.setState({ secret: e.target.value })} defaultValue={this.state.secret} />
             <br />
             <br />
             <InputFieldLabel>Fields</InputFieldLabel>
